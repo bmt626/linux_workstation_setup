@@ -213,5 +213,15 @@ echo "installing bloodhound"
 git clone https://github.com/BloodHoundAD/BloodHound.git
 echo "done"
 
+echo "install responder"
+git clone https://github.com/lgandx/Responder.git
+echo "done"
+
+echo "install metasploit"
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \
+  ./msfinstall
+echo "done"
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

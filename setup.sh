@@ -205,5 +205,13 @@ echo "installing enum4linux-ng"
 git clone https://github.com/cddmp/enum4linux-ng
 echo "done"
 
+echo "installing plumhound"
+git clone https://github.com/PlumHound/PlumHound.git
+echo "done"
+
+echo "installing bloodhound"
+git clone https://github.com/BloodHoundAD/BloodHound.git
+echo "done"
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

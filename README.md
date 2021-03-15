@@ -34,3 +34,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - plumhound
 - metasploit
 - hashcat
+- hakrawler
+- hakrevdns

@@ -190,6 +190,14 @@ echo "installing ffuf"
 go get -u github.com/ffuf/ffuf
 echo "done"
 
+echo "installing hakrawler"
+go get github.com/hakluke/hakrawler
+echo "done"
+
+echo "installing hakrevdns"
+go get github.com/hakluke/hakrevdns
+echo "done"
+
 echo "downloading Seclists"
 cd ~/tools/
 git clone https://github.com/danielmiessler/SecLists.git

@@ -222,8 +222,12 @@ echo "installing bloodhound"
 git clone https://github.com/BloodHoundAD/BloodHound.git
 echo "done"
 
-echo "install responder"
+echo "installing responder"
 git clone https://github.com/lgandx/Responder.git
+echo "done"
+
+echo "installing OneRuleToRuleThemAll"
+git clone https://github.com/NotSoSecure/password_cracking_rules.git
 echo "done"
 
 echo "install metasploit"

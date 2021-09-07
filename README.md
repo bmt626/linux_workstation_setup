@@ -36,3 +36,4 @@ Install tools I typically use on a Ubuntu Based distro.
 - hashcat
 - hakrawler
 - hakrevdns
+- OneRuleToRuleThemAll (Hashcat ruleset)

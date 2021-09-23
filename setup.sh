@@ -35,6 +35,7 @@ sudo apt install -y wireshark
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng
+sudo apt install -y openjdk-11-jdk
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

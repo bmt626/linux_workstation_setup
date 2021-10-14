@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WORKDIR=`pwd`
+
 
 sudo apt -y update
 sudo apt -y upgrade
@@ -120,6 +122,8 @@ echo "installing wpscan"
 git clone https://github.com/wpscanteam/wpscan.git
 cd wpscan*
 sudo gem install bundler && bundle install --without test
+mkdir ~/.wpscan
+cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
 cd ~/tools/
 echo "done"
 
@@ -220,7 +224,7 @@ echo "installing plumhound"
 git clone https://github.com/PlumHound/PlumHound.git
 echo "done"
 
-echo "installing bloodhound"
+echo "installing bloodhound"git@github.com:bmt626/linux_workstation_setup.git
 git clone https://github.com/BloodHoundAD/BloodHound.git
 echo "done"
 

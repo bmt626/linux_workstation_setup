@@ -122,6 +122,7 @@ echo "installing wpscan"
 git clone https://github.com/wpscanteam/wpscan.git
 cd wpscan*
 sudo gem install bundler && bundle install --without test
+sudo gem install wpscan
 mkdir ~/.wpscan
 cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
 cd ~/tools/

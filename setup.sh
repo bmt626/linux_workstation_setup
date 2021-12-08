@@ -9,7 +9,8 @@ sudo apt -y upgrade
 
 sudo apt install -y libcurl4-openssl-dev
 sudo apt install -y libssl-dev
-sudo apt-get install -y pkg-config
+sudo apt install -y curl
+sudo apt install -y pkg-config
 sudo apt install -y jq
 sudo apt install -y ruby-full
 sudo apt install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev

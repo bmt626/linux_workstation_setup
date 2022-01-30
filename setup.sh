@@ -38,7 +38,7 @@ sudo apt install -y wireshark
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng
-sudo apt install -y openjdk-11-jdk
+sudo apt install -y openjdk-17-jdk
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER
@@ -67,7 +67,7 @@ select choice in "${choices[@]}"; do
                 yes)
 
 					echo "Installing Golang"
-					wget https://dl.google.com/go/go1.16.linux-amd64.tar.gz
+					wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
 					sudo tar -xvf go1.16.linux-amd64.tar.gz
 					sudo mv go /usr/local
 					export GOROOT=/usr/local/go

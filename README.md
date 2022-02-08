@@ -39,3 +39,8 @@ Install tools I typically use on a Ubuntu Based distro.
 - OneRuleToRuleThemAll (Hashcat ruleset)
 - hcxdumptool
 - hcxtools
+- ipeft3
+- speedtest-cli
+- htop
+- wavemon
+- ncdu

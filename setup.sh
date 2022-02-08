@@ -35,6 +35,7 @@ sudo apt install -y python3-ldap3
 sudo apt install -y python3-yaml
 sudo apt install -y python3-impacket
 sudo apt install -y wireshark
+sudo apt install -y wavemon
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng

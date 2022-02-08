@@ -42,6 +42,8 @@ sudo apt install -y aircrack-ng
 sudo apt install -y openjdk-17-jdk
 sudo apt install -y htop
 sudo apt install -y ncdu
+sudo apt install -y speedtest-cli
+sudo apt install -y iperf3
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

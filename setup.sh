@@ -265,6 +265,13 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 cd ~/tools
 echo "done"
 
+echo "installing trape"
+git clone https://github.com/jofpin/trape.git
+cd trape
+pip3 install -r requirements.txt
+cd ~/tools
+echo "done"
+
 echo "installing speedtest-cli python"
 git clone https://github.com/sivel/speedtest-cli.git
 cd ~/tools

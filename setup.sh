@@ -277,6 +277,13 @@ git clone https://github.com/sivel/speedtest-cli.git
 cd ~/tools
 "echo done"
 
+echo "installing speedtest-cli"
+mkdir speedtest
+cd speedtest
+wget https://install.speedtest.net/app/cli/ookla-speedtest-1.1.1-linux-x86_64.tgz
+tar -xvf ookla-speedtest-1.1.1-linux-x86_64.tgz
+echo "done"
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

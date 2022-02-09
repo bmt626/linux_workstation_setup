@@ -44,3 +44,4 @@ Install tools I typically use on a Ubuntu Based distro.
 - htop
 - wavemon
 - ncdu
+- trape

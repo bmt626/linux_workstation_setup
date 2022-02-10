@@ -43,6 +43,10 @@ sudo apt install -y openjdk-17-jdk
 sudo apt install -y htop
 sudo apt install -y ncdu
 sudo apt install -y iperf3
+sudo apt install -y iptraf-ng
+sudo apt install -y mosh
+sudo apt install -y sipcalc
+sudo apt install -y screen
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

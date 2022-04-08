@@ -234,7 +234,7 @@ echo "installing plumhound"
 git clone https://github.com/PlumHound/PlumHound.git
 echo "done"
 
-echo "installing bloodhound"git@github.com:bmt626/linux_workstation_setup.git
+echo "installing bloodhound"
 git clone https://github.com/BloodHoundAD/BloodHound.git
 echo "done"
 

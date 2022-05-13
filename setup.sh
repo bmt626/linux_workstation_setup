@@ -137,6 +137,7 @@ cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
 cd ~/tools/
 echo "done"
 
+
 echo "installing dirsearch"
 git clone https://github.com/maurosoria/dirsearch.git
 cd ~/tools/
@@ -175,6 +176,7 @@ make
 cd ~/tools/
 echo "done"
 
+
 echo "installing asnlookup"
 git clone https://github.com/yassineaboukir/asnlookup.git
 cd ~/tools/asnlookup
@@ -182,37 +184,45 @@ pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
+
 echo "installing httprobe"
-go get -u github.com/tomnomnom/httprobe 
+go install github.com/tomnomnom/httprobe@latest 
 echo "done"
+
 
 echo "installing unfurl"
-go get -u github.com/tomnomnom/unfurl 
+go install github.com/tomnomnom/unfurl@latest 
 echo "done"
 
+
 echo "installing waybackurls"
-go get github.com/tomnomnom/waybackurls
+go install github.com/tomnomnom/waybackurls@latest
 echo "done"
+
 
 echo "installing crtndstry"
 git clone https://github.com/nahamsec/crtndstry.git
 echo "done"
 
 echo "installing gobuster"
-go get github.com/OJ/gobuster
+go install github.com/OJ/gobuster@latest
 echo "done"
+
 
 echo "installing ffuf"
-go get -u github.com/ffuf/ffuf
+go install github.com/ffuf/ffuf@latest
 echo "done"
+
 
 echo "installing hakrawler"
-go get github.com/hakluke/hakrawler
+go install github.com/hakluke/hakrawler@latest
 echo "done"
 
+
 echo "installing hakrevdns"
-go get github.com/hakluke/hakrevdns
+go install github.com/hakluke/hakrevdns@latest
 echo "done"
+
 
 echo "downloading Seclists"
 cd ~/tools/
@@ -222,45 +232,36 @@ cd ~/tools/SecLists/Discovery/DNS/
 cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 
+
 echo "installing linPEAS & winPEAS"
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
 echo "done"
+
 
 echo "installing enum4linux-ng"
 git clone https://github.com/cddmp/enum4linux-ng
 echo "done"
 
+
 echo "installing plumhound"
 git clone https://github.com/PlumHound/PlumHound.git
 echo "done"
+
 
 echo "installing bloodhound"
 git clone https://github.com/BloodHoundAD/BloodHound.git
 echo "done"
 
+
 echo "installing responder"
 git clone https://github.com/lgandx/Responder.git
 echo "done"
+
 
 echo "installing OneRuleToRuleThemAll"
 git clone https://github.com/NotSoSecure/password_cracking_rules.git
 echo "done"
 
-echo "installing hcxdumptool"
-git clone https://github.com/ZerBea/hcxdumptool.git
-cd hcxdumptool
-make
-sudo make install
-cd ~/tools
-echo "done"
-
-echo "installing hcxtools"
-git clone https://github.com/ZerBea/hcxtools.git
-cd hcxtools
-make
-sudo make install
-cd ~/tools
-"echo done"
 
 echo "install metasploit"
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
@@ -269,6 +270,7 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 cd ~/tools
 echo "done"
 
+
 echo "installing trape"
 git clone https://github.com/jofpin/trape.git
 cd trape
@@ -276,18 +278,6 @@ pip3 install -r requirements.txt
 cd ~/tools
 echo "done"
 
-echo "installing speedtest-cli python"
-git clone https://github.com/sivel/speedtest-cli.git
-cd ~/tools
-"echo done"
-
-echo "installing speedtest-cli"
-mkdir speedtest
-cd speedtest
-wget https://install.speedtest.net/app/cli/ookla-speedtest-1.1.1-linux-x86_64.tgz
-tar -xvf ookla-speedtest-1.1.1-linux-x86_64.tgz
-sudo cp speedtest /usr/bin
-echo "done"
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

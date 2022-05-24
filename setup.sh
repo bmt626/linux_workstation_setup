@@ -263,6 +263,10 @@ git clone https://github.com/NotSoSecure/password_cracking_rules.git
 echo "done"
 
 
+echo "installing httpx"
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+echo "done"
+
 echo "install metasploit"
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
   chmod 755 msfinstall && \

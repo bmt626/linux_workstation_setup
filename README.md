@@ -46,3 +46,4 @@ Install tools I typically use on a Ubuntu Based distro.
 - mosh
 - sipcalc
 - screen
+- httpx

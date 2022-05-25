@@ -2,10 +2,8 @@
 
 WORKDIR=`pwd`
 
-
 sudo apt -y update
 sudo apt -y upgrade
-
 
 sudo apt install -y libcurl4-openssl-dev
 sudo apt install -y libssl-dev
@@ -39,7 +37,7 @@ sudo apt install -y wavemon
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng
-sudo apt install -y openjdk-17-jdk
+sudo apt install -y openjdk-11-jdk
 sudo apt install -y htop
 sudo apt install -y ncdu
 sudo apt install -y iperf3
@@ -54,7 +52,6 @@ sudo usermod -aG wireshark $USER
 # add user to plugdev group
 sudo usermod -aG plugdev $USER
 
-
 # copy recon_profile to  ~/.recon_profile and add to bashrc
 cp recon_profile ~/.recon_profile
 cat <<EOT >> ~/.bashrc
@@ -63,7 +60,6 @@ if [ -f ~/.recon_profile ]; then
 fi
 
 EOT
-
 
 # install go
 if [[ -z "$GOPATH" ]];then
@@ -120,12 +116,10 @@ pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
-
 echo "installing teh_s3_bucketeers"
 git clone https://github.com/tomdev/teh_s3_bucketeers.git
 cd ~/tools/
 echo "done"
-
 
 echo "installing wpscan"
 git clone https://github.com/wpscanteam/wpscan.git
@@ -137,12 +131,10 @@ cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
 cd ~/tools/
 echo "done"
 
-
 echo "installing dirsearch"
 git clone https://github.com/maurosoria/dirsearch.git
 cd ~/tools/
 echo "done"
-
 
 echo "installing lazys3"
 git clone https://github.com/nahamsec/lazys3.git
@@ -176,7 +168,6 @@ make
 cd ~/tools/
 echo "done"
 
-
 echo "installing asnlookup"
 git clone https://github.com/yassineaboukir/asnlookup.git
 cd ~/tools/asnlookup
@@ -184,21 +175,17 @@ pip3 install -r requirements.txt
 cd ~/tools/
 echo "done"
 
-
 echo "installing httprobe"
 go install github.com/tomnomnom/httprobe@latest 
 echo "done"
-
 
 echo "installing unfurl"
 go install github.com/tomnomnom/unfurl@latest 
 echo "done"
 
-
 echo "installing waybackurls"
 go install github.com/tomnomnom/waybackurls@latest
 echo "done"
-
 
 echo "installing crtndstry"
 git clone https://github.com/nahamsec/crtndstry.git
@@ -208,21 +195,17 @@ echo "installing gobuster"
 go install github.com/OJ/gobuster@latest
 echo "done"
 
-
 echo "installing ffuf"
 go install github.com/ffuf/ffuf@latest
 echo "done"
-
 
 echo "installing hakrawler"
 go install github.com/hakluke/hakrawler@latest
 echo "done"
 
-
 echo "installing hakrevdns"
 go install github.com/hakluke/hakrevdns@latest
 echo "done"
-
 
 echo "downloading Seclists"
 cd ~/tools/
@@ -232,36 +215,21 @@ cd ~/tools/SecLists/Discovery/DNS/
 cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 
-
 echo "installing linPEAS & winPEAS"
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
 echo "done"
-
 
 echo "installing enum4linux-ng"
 git clone https://github.com/cddmp/enum4linux-ng
 echo "done"
 
-
-echo "installing plumhound"
-git clone https://github.com/PlumHound/PlumHound.git
-echo "done"
-
-
-echo "installing bloodhound"
-git clone https://github.com/BloodHoundAD/BloodHound.git
-echo "done"
-
-
 echo "installing responder"
 git clone https://github.com/lgandx/Responder.git
 echo "done"
 
-
 echo "installing OneRuleToRuleThemAll"
 git clone https://github.com/NotSoSecure/password_cracking_rules.git
 echo "done"
-
 
 echo "installing httpx"
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
@@ -274,14 +242,12 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 cd ~/tools
 echo "done"
 
-
 echo "installing trape"
 git clone https://github.com/jofpin/trape.git
 cd trape
 pip3 install -r requirements.txt
 cd ~/tools
 echo "done"
-
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

@@ -30,8 +30,6 @@ Install tools I typically use on a Ubuntu Based distro.
 - binwalk
 - john the ripper
 - wireshark
-- bloodhound
-- plumhound
 - metasploit
 - hashcat
 - hakrawler

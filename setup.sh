@@ -45,6 +45,8 @@ sudo apt install -y iptraf-ng
 sudo apt install -y mosh
 sudo apt install -y sipcalc
 sudo apt install -y screen
+sudo apt install -y hcxdumptool
+sudo apt install -y hcxtools
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

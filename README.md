@@ -45,3 +45,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - sipcalc
 - screen
 - httpx
+- hcxdumptool (apt install)
+- hcxtools (apt install)

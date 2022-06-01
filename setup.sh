@@ -218,7 +218,11 @@ cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 
 echo "installing linPEAS & winPEAS"
-git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
+mkdir PEASS-ng
+cd PEASS-ng
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat
+cd ~/tools
 echo "done"
 
 echo "installing enum4linux-ng"

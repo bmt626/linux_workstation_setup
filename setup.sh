@@ -47,6 +47,8 @@ sudo apt install -y sipcalc
 sudo apt install -y screen
 sudo apt install -y hcxdumptool
 sudo apt install -y hcxtools
+sudo apt install -y virtualbox
+sudo apt install -y python3-venv
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER
@@ -257,10 +259,20 @@ echo "done"
 
 echo "getting mobsf"
 git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+cd Mobile-Security-Framework-MobSF
+./setup.sh
+cd ~/tools
 echo "done"
 
 echo "getting proxmark3"
 git clone https://github.com/RfidResearchGroup/proxmark3.git
+cd proxmark3
+sudo apt-get install --no-install-recommends git ca-certificates build-essential pkg-config libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev libbz2-dev libbluetooth-dev libpython3-dev libssl-dev -y
+make accessrights
+cp ~/linux_workstation_setup/proxmark3/Makefile.platform ~/tools/proxmark3/Makefile.platform
+make clean && make -j
+sudo make install
+cd ~/tools
 echo "done"
 
 echo "getting john the ripper jumbo"

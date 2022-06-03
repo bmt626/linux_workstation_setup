@@ -49,3 +49,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - hcxtools (apt install)
 - mobsf
 - proxmark3
+- python3-venv (for mobsf)
+- virtualbox

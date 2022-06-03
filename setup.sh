@@ -49,6 +49,8 @@ sudo apt install -y hcxdumptool
 sudo apt install -y hcxtools
 sudo apt install -y virtualbox
 sudo apt install -y python3-venv
+sudo apt install -y youtube-dl
+sudo apt install -y alacarte
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

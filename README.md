@@ -51,3 +51,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - proxmark3
 - python3-venv (for mobsf)
 - virtualbox
+- youtube-dl
+- alacarte (menu editor)

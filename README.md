@@ -28,7 +28,7 @@ Install tools I typically use on a Ubuntu Based distro.
 - enum4linux-ng
 - hydra
 - binwalk
-- john the ripper
+- john the ripper jumbo repo
 - wireshark
 - metasploit
 - hashcat
@@ -47,3 +47,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - httpx
 - hcxdumptool (apt install)
 - hcxtools (apt install)
+- mobsf
+- proxmark3

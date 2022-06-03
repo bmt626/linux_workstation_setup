@@ -255,6 +255,18 @@ pip3 install -r requirements.txt
 cd ~/tools
 echo "done"
 
+echo "getting mobsf"
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+echo "done"
+
+echo "getting proxmark3"
+git clone https://github.com/RfidResearchGroup/proxmark3.git
+echo "done"
+
+echo "getting john the ripper jumbo"
+git clone https://github.com/openwall/john.git
+echo "done"
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

@@ -277,6 +277,9 @@ echo "done"
 
 echo "getting john the ripper jumbo"
 git clone https://github.com/openwall/john.git
+cd john/scr
+./configure && make -s clean && make
+~/tools
 echo "done"
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"

@@ -51,6 +51,7 @@ sudo apt install -y virtualbox
 sudo apt install -y python3-venv
 sudo apt install -y youtube-dl
 sudo apt install -y alacarte
+sudo apt install -y exiftool
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

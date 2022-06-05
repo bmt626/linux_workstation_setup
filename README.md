@@ -53,3 +53,4 @@ Install tools I typically use on a Ubuntu Based distro.
 - virtualbox
 - youtube-dl
 - alacarte (menu editor)
+- exiftool

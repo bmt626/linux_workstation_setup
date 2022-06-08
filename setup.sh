@@ -285,6 +285,14 @@ cd john/scr
 ~/tools
 echo "done"
 
+echo "installing feroxbuster"
+git clone https://github.com/epi052/feroxbuster.git
+cd feroxbuster
+bash install-nix.sh
+cd ~/tools
+echo "done"
+
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

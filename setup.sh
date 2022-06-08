@@ -52,6 +52,8 @@ sudo apt install -y python3-venv
 sudo apt install -y youtube-dl
 sudo apt install -y alacarte
 sudo apt install -y exiftool
+sudo apt install -y slapd
+sudo apt install -y ldap-utils
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

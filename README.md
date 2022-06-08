@@ -54,3 +54,5 @@ Install tools I typically use on a Ubuntu Based distro.
 - youtube-dl
 - alacarte (menu editor)
 - exiftool
+- slapd
+- ldap-utils

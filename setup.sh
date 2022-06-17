@@ -106,6 +106,9 @@ rm go1.16.linux-amd64.tar.gz
 mkdir ~/tools
 cd ~/tools/
 
+# copy fix burp scaling script to tools dir
+cp $WORKDIR/fix_burp_scaling.sh ~/tools
+
 #install aquatone
 echo "Installing Aquatone"
 go get github.com/michenriksen/aquatone

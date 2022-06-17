@@ -1,5 +1,7 @@
 # Linux Workstation Setup
 Install tools I typically use on a Ubuntu Based distro.
+# Scripts
+fix_burp_scaling.sh - sets the java uiScale=2 in the burp launch script
 
 # Tools
 

@@ -78,8 +78,8 @@ select choice in "${choices[@]}"; do
                 yes)
 
 					echo "Installing Golang"
-					wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
-					sudo tar -xvf go1.17.6.linux-amd64.tar.gz
+					wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
+					sudo tar -xvf go1.20.3.linux-amd64.tar.gz
 					sudo mv go /usr/local
 					export GOROOT=/usr/local/go
 					export GOPATH=$HOME/go
@@ -100,7 +100,7 @@ select choice in "${choices[@]}"; do
 done
 fi
 
-rm go1.16.linux-amd64.tar.gz
+rm go1.20.3.linux-amd64.tar.gz
 
 #create a tools folder in ~/
 mkdir ~/tools

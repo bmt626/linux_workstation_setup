@@ -37,7 +37,7 @@ sudo apt install -y wavemon
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng
-sudo apt install -y openjdk-11-jdk
+sudo apt install -y openjdk-17-jdk
 sudo apt install -y htop
 sudo apt install -y ncdu
 sudo apt install -y iperf3
@@ -105,9 +105,6 @@ rm go1.20.3.linux-amd64.tar.gz
 #create a tools folder in ~/
 mkdir ~/tools
 cd ~/tools/
-
-# copy fix burp scaling script to tools dir
-cp $WORKDIR/fix_burp_scaling.sh ~/tools
 
 #install aquatone
 echo "Installing Aquatone"

@@ -1,0 +1,1 @@
+alias sn="shutdown now"

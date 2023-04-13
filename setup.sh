@@ -72,6 +72,9 @@ fi
 
 EOT
 
+# copy bash_aliases to home dir
+cp bash_aliases ~/.bash_aliases
+
 # install go
 if [[ -z "$GOPATH" ]];then
 echo "It looks like go is not installed, would you like to install it now"

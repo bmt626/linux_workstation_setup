@@ -60,6 +60,9 @@ sudo usermod -aG wireshark $USER
 # add user to plugdev group
 sudo usermod -aG plugdev $USER
 
+# add user to vboxusers group
+sudo usermod -aG vboxusers $USER
+
 # copy recon_profile to  ~/.recon_profile and add to bashrc
 cp recon_profile ~/.recon_profile
 cat <<EOT >> ~/.bashrc

@@ -58,3 +58,4 @@ fix_burp_scaling.sh - sets the java uiScale=2 in the burp launch script
 - exiftool
 - feroxbuster
 - android-sdk-platform-tools
+- impacket

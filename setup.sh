@@ -299,6 +299,12 @@ bash install-nix.sh
 cd ~/tools
 echo "done"
 
+echo "installing impacket"
+git clone https://github.com/fortra/impacket.git
+cd impacket
+sudo python setup.py install
+cd ~/tools
+echo "done"
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la

@@ -59,3 +59,4 @@ fix_burp_scaling.sh - sets the java uiScale=2 in the burp launch script
 - feroxbuster
 - android-sdk-platform-tools
 - impacket
+- Added ALFA AWUS036ACH support from Aircrack-NG

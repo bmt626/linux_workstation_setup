@@ -306,6 +306,14 @@ sudo python setup.py install
 cd ~/tools
 echo "done"
 
+echo "installing support for ALFA AWUS036ACH"
+git clone https://github.com/aircrack-ng/rtl8812au/
+cd rtl8812au
+sudo make dkms_install
+sudo dkms autoinstall
+sudo dkms status
+sudo modprobe 88XXau
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

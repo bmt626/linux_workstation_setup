@@ -314,6 +314,9 @@ sudo dkms autoinstall
 sudo dkms status
 sudo modprobe 88XXau
 
+echo "installing pantagrule"
+git clone https://github.com/rarecoil/pantagrule.git
+
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

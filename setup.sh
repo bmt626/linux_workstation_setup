@@ -54,6 +54,8 @@ sudo apt install -y youtube-dl
 sudo apt install -y alacarte
 sudo apt install -y exiftool
 sudo apt install -y android-sdk-platform-tools
+sudo apt install -y libnl-3-dev
+sudo apt install -y libnl-genl-3-dev
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER
@@ -318,6 +320,13 @@ sudo modprobe 88XXau
 echo "installing pantagrule"
 git clone https://github.com/rarecoil/pantagrule.git
 
+echo "installing wifiphisher"
+git clone https://github.com/wifiphisher/wifiphisher.git
+cd wifiphisher
+sudo python setup.py install
+cd ~/tools
+echo "done"
+
 
 #fix metasploit apt key into its own file
 echo "exporting metasploit framework key"
@@ -328,6 +337,7 @@ sudo sed -i 's@deb@deb [signed-by=/usr/share/keyrings/metasploit.gpg]@g' /etc/ap
 
 echo "removing old apt key"
 sudo apt-key del 2007B954
+echo "done"
 
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"

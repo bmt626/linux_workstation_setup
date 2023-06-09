@@ -320,6 +320,13 @@ sudo modprobe 88XXau
 echo "installing pantagrule"
 git clone https://github.com/rarecoil/pantagrule.git
 
+echo "installing wifite"
+git clone https://github.com/derv82/wifite2.git
+cd wifite2
+sudo python setup.py install
+cd ~/tools
+echo "done"
+
 echo "installing wifiphisher"
 git clone https://github.com/wifiphisher/wifiphisher.git
 cd wifiphisher

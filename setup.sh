@@ -46,8 +46,6 @@ sudo apt install -y iptraf-ng
 sudo apt install -y mosh
 sudo apt install -y sipcalc
 sudo apt install -y screen
-sudo apt install -y hcxdumptool
-sudo apt install -y hcxtools
 sudo apt install -y virtualbox
 sudo apt install -y python3-venv
 sudo apt install -y youtube-dl
@@ -56,6 +54,13 @@ sudo apt install -y exiftool
 sudo apt install -y android-sdk-platform-tools
 sudo apt install -y libnl-3-dev
 sudo apt install -y libnl-genl-3-dev
+sudo apt install -y net-tools
+sudo apt install -y libpcap-dev
+sudo apt install -y pixiewps
+sudo apt install -y tshark
+sudo apt install -y hcxtools
+sudo apt install -y hcxdumptool
+sudo apt install -y hcxkeys
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER
@@ -317,14 +322,16 @@ sudo dkms autoinstall
 sudo dkms status
 sudo modprobe 88XXau
 
+echo "installing wifite"
+git clone https://github.com/kimocoder/wifite2.git
+cd wifite2
+pip3 install -r requirements.txt
+sudo python3 setup.py install
+cd ~/tools
+echo "done"
+
 echo "installing pantagrule"
 git clone https://github.com/rarecoil/pantagrule.git
-
-echo "installing wifite"
-git clone https://github.com/derv82/wifite2.git
-cd wifite2
-sudo python setup.py install
-cd ~/tools
 echo "done"
 
 echo "installing wifiphisher"
@@ -333,7 +340,6 @@ cd wifiphisher
 sudo python setup.py install
 cd ~/tools
 echo "done"
-
 
 #fix metasploit apt key into its own file
 echo "exporting metasploit framework key"

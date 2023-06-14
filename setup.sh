@@ -322,6 +322,8 @@ sudo make dkms_install
 sudo dkms autoinstall
 sudo dkms status
 sudo modprobe 88XXau
+cd ~/tools
+echo "done"
 
 echo "installing wifite"
 git clone https://github.com/kimocoder/wifite2.git

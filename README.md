@@ -68,3 +68,4 @@ fix_burp_scaling.sh - sets the java uiScale=2 in the burp launch script
 - pixiewps
 - bully
 - tshark
+- hackrf

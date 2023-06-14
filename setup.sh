@@ -61,6 +61,7 @@ sudo apt install -y tshark
 sudo apt install -y hcxtools
 sudo apt install -y hcxdumptool
 sudo apt install -y hcxkeys
+sudo apt install -y hackrf
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

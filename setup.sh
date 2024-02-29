@@ -27,7 +27,6 @@ sudo apt install -y nmap
 sudo apt install -y john john-data
 sudo apt install -y hydra hydra-gtk
 sudo apt install -y hashcat
-sudo apt install -y smbclient
 sudo apt install -y openvpn
 sudo apt install -y smbclient
 sudo apt install -y python3-ldap3

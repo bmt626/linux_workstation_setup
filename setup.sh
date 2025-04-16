@@ -72,11 +72,11 @@ sudo usermod -aG plugdev $USER
 # add user to vboxusers group
 sudo usermod -aG vboxusers $USER
 
-# copy recon_profile to  ~/.recon_profile and add to bashrc
-cp recon_profile ~/.recon_profile
+# copy tools_profile to  ~/.tools_profile and add to bashrc
+cp tools_profile ~/.tools_profile
 cat <<EOT >> ~/.bashrc
-if [ -f ~/.recon_profile ]; then
-        . ~/.recon_profile
+if [ -f ~/.tools_profile ]; then
+        . ~/.tools_profile
 fi
 
 EOT

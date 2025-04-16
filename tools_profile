@@ -29,7 +29,12 @@ curl https://certspotter.com/api/v0/certs\?domain\=$1 | jq '.[].dns_names[]' | s
 } #h/t Jobert Abma
 
 ipinfo(){
-curl http://ipinfo.io/$1
+    if [ -z "$1" ]
+    then
+        curl https://ipinfo.io/what-is-my-ip
+    else curl https://ipinfo.io/$1
+    fi
+
 }
 
 

@@ -343,18 +343,6 @@ sudo python setup.py install
 cd ~/tools
 echo "done"
 
-#fix metasploit apt key into its own file
-echo "exporting metasploit framework key"
-sudo apt-key export 2007B954 | sudo gpg --dearmour -o /usr/share/keyrings/metasploit.gpg
-
-echo "adding signed-by the key to the apt source"
-sudo sed -i 's@deb@deb [signed-by=/usr/share/keyrings/metasploit.gpg]@g' /etc/apt/sources.list.d/metasploit-framework.list 
-
-echo "removing old apt key"
-sudo apt-key del 2007B954
-echo "done"
-
-
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
 echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

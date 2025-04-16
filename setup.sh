@@ -61,6 +61,7 @@ sudo apt install -y hcxtools
 sudo apt install -y hcxdumptool
 sudo apt install -y hcxkeys
 sudo apt install -y hackrf
+sudo apt install -y pipx
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER
@@ -340,6 +341,12 @@ echo "installing wifiphisher"
 git clone https://github.com/wifiphisher/wifiphisher.git
 cd wifiphisher
 sudo python setup.py install
+cd ~/tools
+echo "done"
+
+echo "Running pipx ensurepath to fix pipx"
+pipx ensurepath
+source ~/.bashrc
 cd ~/tools
 echo "done"
 

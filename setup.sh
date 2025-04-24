@@ -346,6 +346,22 @@ source ~/.bashrc
 cd ~/tools
 echo "done"
 
+echo "Installing Updog Server"
+pipx install updog
+echo "done"
+
+echo "Installing Naabu"
+go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+echo "done"
+
+echo "Installing dnsx"
+go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+echo "done"
+
+echo "Installing subfinder"
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+echo "done"
+
 echo "Installing Rustscan"
 wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zip
 unzip rustscan.deb.zip

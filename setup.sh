@@ -25,7 +25,7 @@ sudo apt install -y tmux
 sudo apt install -y binwalk
 sudo apt install -y nmap
 sudo apt install -y john john-data
-sudo apt install -y hydra hydra-gtk
+sudo apt install -y hydra
 sudo apt install -y hashcat
 sudo apt install -y openvpn
 sudo apt install -y smbclient
@@ -37,7 +37,7 @@ sudo apt install -y wavemon
 sudo apt install -y macchanger
 sudo apt install -y dsniff
 sudo apt install -y aircrack-ng
-sudo apt install -y openjdk-17-jdk
+sudo apt install -y openjdk-21-jdk
 sudo apt install -y htop
 sudo apt install -y ncdu
 sudo apt install -y iperf3
@@ -45,11 +45,11 @@ sudo apt install -y iptraf-ng
 sudo apt install -y mosh
 sudo apt install -y sipcalc
 sudo apt install -y screen
-sudo apt install -y virtualbox
+sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
 sudo apt install -y python3-venv
-sudo apt install -y youtube-dl
+sudo apt install -y yt-dlp youtubedl-gui
 sudo apt install -y alacarte
-sudo apt install -y exiftool
+sudo apt install -y exiftool libimage-exiftool-perl
 sudo apt install -y android-sdk-platform-tools
 sudo apt install -y libnl-3-dev
 sudo apt install -y libnl-genl-3-dev
@@ -94,8 +94,8 @@ select choice in "${choices[@]}"; do
                 yes)
 
 					echo "Installing Golang"
-					wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
-					sudo tar -xvf go1.20.3.linux-amd64.tar.gz
+					wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+					sudo tar -xvf go1.24.2.linux-amd64.tar.gz
 					sudo mv go /usr/local
 					export GOROOT=/usr/local/go
 					export GOPATH=$HOME/go
@@ -116,16 +116,11 @@ select choice in "${choices[@]}"; do
 done
 fi
 
-rm go1.20.3.linux-amd64.tar.gz
+rm go1.24.2.linux-amd64.tar.gz
 
 #create a tools folder in ~/
 mkdir ~/tools
 cd ~/tools/
-
-#install aquatone
-echo "Installing Aquatone"
-go get github.com/michenriksen/aquatone
-echo "done"
 
 #install chromium
 echo "Installing Chromium"
@@ -348,6 +343,19 @@ echo "Running pipx ensurepath to fix pipx"
 pipx ensurepath
 source ~/.bashrc
 cd ~/tools
+echo "done"
+
+echo "Installing Rustscan"
+wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zip
+unzip rustscan.deb.zip
+sudo dpkg -i rustscan*.deb
+rm rustscan*
+echo "done"
+
+echo "Installing Genymotion"
+wget https://dl.genymotion.com/releases/genymotion-3.8.0/genymotion-3.8.0-linux_x64.bin
+sudo bash genymotion-3.8.0-linux_x64.bin -y
+rm genymotion-3.8.0-linux_x64.bin
 echo "done"
 
 echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"

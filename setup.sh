@@ -62,6 +62,7 @@ sudo apt install -y hcxdumptool
 sudo apt install -y hcxkeys
 sudo apt install -y hackrf
 sudo apt install -y pipx
+sudo apt install -y libfuse2t64
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

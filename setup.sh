@@ -85,6 +85,7 @@ flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub io.github.sigmasd.stimulator -y
 flatpak install flathub org.telegram.desktop -y
 flatpak install flathub com.github.unrud.VideoDownloader -y
+flatpak install flathub net.werwolv.ImHex -y
  
 
 # add running user to wireshark group

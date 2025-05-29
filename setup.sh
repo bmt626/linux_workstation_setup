@@ -66,6 +66,7 @@ sudo apt install -y libfuse2t64
 sudo apt install -y wireguard
 sudo apt install -y flatpak
 sudo apt install -y gnome-software-plugin-flatpak
+sudo apt install -y whois
 
 # add flatpak repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

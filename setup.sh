@@ -64,6 +64,27 @@ sudo apt install -y hackrf
 sudo apt install -y pipx
 sudo apt install -y libfuse2t64
 sudo apt install -y wireguard
+sudo apt install -y flatpak
+sudo apt install -y gnome-software-plugin-flatpak
+
+# add flatpak repo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# add flatpak packages
+flatpak install flathub com.usebottles.bottles -y
+flatpak install flathub co.logonoff.awakeonlan -y
+flatpak install flathub com.boxy_svg.BoxySVG -y
+flatpak install flathub org.sqlitebrowser.sqlitebrowser -y
+flatpak install flathub io.dbeaver.DBeaverCommunity -y
+flatpak install flathub io.github.cleomenezesjr.Escambo -y
+flatpak install flathub rest.insomnia.Insomnia -y
+flatpak install flathub com.github.skylot.jadx -y
+flatpak install flathub com.obsproject.Studio -y
+flatpak install flathub com.getpostman.Postman -y
+flatpak install flathub io.github.sigmasd.stimulator -y
+flatpak install flathub org.telegram.desktop -y
+flatpak install flathub com.github.unrud.VideoDownloader -y
+ 
 
 # add running user to wireshark group
 sudo usermod -aG wireshark $USER

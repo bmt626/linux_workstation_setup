@@ -97,6 +97,9 @@ sudo usermod -aG plugdev $USER
 # add user to vboxusers group
 sudo usermod -aG vboxusers $USER
 
+# make sure pipx is added to path
+pipx ensurepath
+
 # copy tools_profile to  ~/.tools_profile and add to bashrc
 cp tools_profile ~/.tools_profile
 cat <<EOT >> ~/.bashrc
@@ -391,6 +394,11 @@ wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zi
 unzip rustscan.deb.zip
 sudo dpkg -i rustscan*.deb
 rm rustscan*
+echo "done"
+
+echo "Installing NetExec"
+pipx install git+https://github.com/Pennyw0rth/NetExec
+cd ~/tools
 echo "done"
 
 echo "Installing Genymotion"

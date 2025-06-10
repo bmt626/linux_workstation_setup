@@ -402,6 +402,10 @@ pipx install git+https://github.com/Pennyw0rth/NetExec
 cd ~/tools
 echo "done"
 
+echo "Installing bloodyAD"
+pipx install bloodyAD
+echo "done"
+
 echo "Installing autobloody"
 pipx install autobloody
 echo "done"

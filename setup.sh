@@ -67,6 +67,7 @@ sudo apt install -y wireguard
 sudo apt install -y flatpak
 sudo apt install -y gnome-software-plugin-flatpak
 sudo apt install -y whois
+sudo apt install -y libkrb5-dev
 
 # add flatpak repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -399,6 +400,10 @@ echo "done"
 echo "Installing NetExec"
 pipx install git+https://github.com/Pennyw0rth/NetExec
 cd ~/tools
+echo "done"
+
+echo "Installing autobloody"
+pipx install autobloody
 echo "done"
 
 echo "Installing Genymotion"

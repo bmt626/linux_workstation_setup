@@ -1,6 +1,21 @@
 #!/bin/bash
 
+# Reset
+Color_Off='\033[0m'       # Text Reset
+
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
+
 WORKDIR=`pwd`
+
 
 sudo apt -y update
 sudo apt -y upgrade
@@ -115,14 +130,14 @@ cp bash_aliases ~/.bash_aliases
 
 # install go
 if [[ -z "$GOPATH" ]];then
-echo "It looks like go is not installed, would you like to install it now"
+echo -e "${Yellow}It looks like go is not installed, would you like to install it now"
 PS3="Please select an option : "
 choices=("yes" "no")
 select choice in "${choices[@]}"; do
         case $choice in
                 yes)
 
-					echo "Installing Golang"
+					echo -e "${Blue}Installing Golang"
 					wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
 					sudo tar -xvf go1.24.2.linux-amd64.tar.gz
 					sudo mv go /usr/local
@@ -137,8 +152,8 @@ select choice in "${choices[@]}"; do
 					break
 					;;
 				no)
-					echo "Please install go and rerun this script"
-					echo "Aborting installation..."
+					echo -e "${Red}Please install go and rerun this script"
+					echo -e "${Red}Aborting installation..."
 					exit 1
 					;;
 	esac	
@@ -152,23 +167,23 @@ mkdir ~/tools
 cd ~/tools/
 
 #install chromium
-echo "Installing Chromium"
+echo -e "${Blue}Installing Chromium"
 sudo snap install chromium
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing Sublist3r"
+echo -e "${Blue}Installing Sublist3r"
 git clone https://github.com/aboul3la/Sublist3r.git
 cd Sublist3r*
 pip3 install -r requirements.txt
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing teh_s3_bucketeers"
+echo ${Blue}Installing teh_s3_bucketeers"
 git clone https://github.com/tomdev/teh_s3_bucketeers.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing wpscan"
+echo -e "${Blue}Installing wpscan"
 git clone https://github.com/wpscanteam/wpscan.git
 cd wpscan*
 sudo gem install bundler && bundle install --without test
@@ -176,85 +191,85 @@ sudo gem install wpscan
 mkdir ~/.wpscan
 cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing dirsearch"
+echo -e "${Blue}Installing dirsearch"
 git clone https://github.com/maurosoria/dirsearch.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing lazys3"
+echo -e "${Blue}Installing lazys3"
 git clone https://github.com/nahamsec/lazys3.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing virtual host discovery"
+echo -e "${Blue}Installing virtual host discovery"
 git clone https://github.com/jobertabma/virtual-host-discovery.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing sqlmap"
+echo -e "${Blue}Installing sqlmap"
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing knock.py"
+echo -e "${Blue}Installing knock.py"
 git clone https://github.com/guelfoweb/knock.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing lazyrecon"
+echo -e "${Blue}Installing lazyrecon"
 git clone https://github.com/nahamsec/lazyrecon.git
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing massdns"
+echo -e "${Blue}Installing massdns"
 git clone https://github.com/blechschmidt/massdns.git
 cd ~/tools/massdns
 make
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing asnlookup"
+echo -e "${Blue}Installing asnlookup"
 git clone https://github.com/yassineaboukir/asnlookup.git
 cd ~/tools/asnlookup
 pip3 install -r requirements.txt
 cd ~/tools/
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing httprobe"
+echo -e "${Blue}Installing httprobe"
 go install github.com/tomnomnom/httprobe@latest 
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing unfurl"
+echo -e "${Blue}Installing unfurl"
 go install github.com/tomnomnom/unfurl@latest 
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing waybackurls"
+echo -e "${Blue}Installing waybackurls"
 go install github.com/tomnomnom/waybackurls@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing crtndstry"
+echo -e "${Blue}Installing crtndstry"
 git clone https://github.com/nahamsec/crtndstry.git
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing gobuster"
+echo -e "${Blue}Installing gobuster"
 go install github.com/OJ/gobuster@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing ffuf"
+echo -e "${Blue}Installing ffuf"
 go install github.com/ffuf/ffuf@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing hakrawler"
+echo -e "${Blue}Installing hakrawler"
 go install github.com/hakluke/hakrawler@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing hakrevdns"
+echo -e "${Blue}Installing hakrevdns"
 go install github.com/hakluke/hakrevdns@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "downloading Seclists"
+echo -e "{$Blue}Downloading Seclists"
 cd ~/tools/
 git clone https://github.com/danielmiessler/SecLists.git
 cd ~/tools/SecLists/Discovery/DNS/
@@ -262,52 +277,52 @@ cd ~/tools/SecLists/Discovery/DNS/
 cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
 
-echo "installing linPEAS & winPEAS"
+echo -e "${Blue}Installing linPEAS \& winPEAS"
 mkdir PEASS-ng
 cd PEASS-ng
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing enum4linux-ng"
+echo -e "${Blue}Installing enum4linux-ng"
 git clone https://github.com/cddmp/enum4linux-ng
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing responder"
+echo -e "${Blue}Installing responder"
 git clone https://github.com/lgandx/Responder.git
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing OneRuleToRuleThemAll"
+echo -e "${Blue}Installing OneRuleToRuleThemAll"
 git clone https://github.com/NotSoSecure/password_cracking_rules.git
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing httpx"
+echo -e "${Blue}Installing httpx"
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "install metasploit"
+echo -e "${Blue}Installing Metasploit..."
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
   chmod 755 msfinstall && \
   ./msfinstall
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing trape"
+echo -e "${Blue}Installing trape..."
 git clone https://github.com/jofpin/trape.git
 cd trape
 pip3 install -r requirements.txt
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "getting mobsf"
+echo -e "${Blue}Installing MobSF..."
 git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
 cd Mobile-Security-Framework-MobSF
 ./setup.sh
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "getting proxmark3"
+echo -e "${Blue}Installing proxmark3..."
 git clone https://github.com/RfidResearchGroup/proxmark3.git
 cd proxmark3
 sudo apt-get install --no-install-recommends git ca-certificates build-essential pkg-config libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev libbz2-dev libbluetooth-dev libpython3-dev libssl-dev -y
@@ -316,30 +331,30 @@ cp ~/linux_workstation_setup/proxmark3/Makefile.platform ~/tools/proxmark3/Makef
 make clean && make -j
 sudo make install
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "getting john the ripper jumbo"
+echo -e "${Blue}Installing john the ripper jumbo..."
 git clone https://github.com/openwall/john.git
 cd john/scr
 ./configure && make -s clean && make
 ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing feroxbuster"
+echo -e "${Blue}Installing feroxbuster..."
 git clone https://github.com/epi052/feroxbuster.git
 cd feroxbuster
 bash install-nix.sh
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing impacket"
+echo -e "${Blue}Installing impacket..."
 git clone https://github.com/fortra/impacket.git
 cd impacket
 sudo python setup.py install
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing support for ALFA AWUS036ACH"
+echo -e "${Blue}Installing support for ALFA AWUS036ACH..."
 git clone https://github.com/aircrack-ng/rtl8812au/
 cd rtl8812au
 sudo make dkms_install
@@ -347,98 +362,99 @@ sudo dkms autoinstall
 sudo dkms status
 sudo modprobe 88XXau
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing wifite"
+echo -e "${Blue}Installing wifite..."
 git clone https://github.com/kimocoder/wifite2.git
 cd wifite2
 pip3 install -r requirements.txt
 sudo python3 setup.py install
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing pantagrule"
+echo -e "${Blue}Installing pantagrule..."
 git clone https://github.com/rarecoil/pantagrule.git
-echo "done"
+echo -e "${Green}Done!"
 
-echo "installing wifiphisher"
+echo -e "${Blue}Installing wifiphisher..."
 git clone https://github.com/wifiphisher/wifiphisher.git
 cd wifiphisher
 sudo python setup.py install
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Running pipx ensurepath to fix pipx"
+echo -e "${Blue}Running pipx ensurepath to fix pipx..."
 pipx ensurepath
 source ~/.bashrc
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing Updog Server"
+echo -e "${Blue}Installing Updog Server..."
+echo -e "${Cyan} What\'s Updog??"
 pipx install updog
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing Naabu"
+echo -e "${Blue}Installing Naabu..."
 go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing dnsx"
+echo -e "${Blue}Installing dnsx..."
 go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing subfinder"
+echo -e "${Blue}Installing subfinder..."
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing Rustscan"
+echo -e "${Blue}Installing Rustscan..."
 wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zip
 unzip rustscan.deb.zip
 sudo dpkg -i rustscan*.deb
 rm rustscan*
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing NetExec"
+echo -e "${Blue}Installing NetExec..."
 pipx install git+https://github.com/Pennyw0rth/NetExec
 cd ~/tools
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Add Docker's official GPG key"
+echo -e "${Blue}Adding Docker's official GPG key..."
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-echo "Add the docker repository to Apt sources"
+echo -e "${Blue}Adding the docker repository to Apt sources"
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Install Docker"
+echo -e "${Blue}Installing Docker"
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Adding user to docker group"
+echo -e "${Blue}Adding user to docker group"
 sudo usermod -aG docker $USER
 echod "done"
 
-echo "Installing bloodyAD"
+echo -e "${Blue}Installing bloodyAD"
 pipx install bloodyAD
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing autobloody"
+echo -e "${Blue}Installing autobloody"
 pipx install autobloody
-echo "done"
+echo -e "${Green}Done!"
 
-echo "Installing Genymotion"
+echo -e "${Blue}Installing Genymotion"
 wget https://dl.genymotion.com/releases/genymotion-3.8.0/genymotion-3.8.0-linux_x64.bin
 sudo bash genymotion-3.8.0-linux_x64.bin -y
 rm genymotion-3.8.0-linux_x64.bin
-echo "done"
+echo -e "${Green}Done!"
 
-echo -e "\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
+echo -e "${Green}\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
 ls -la
-echo "Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"
+echo -e "${Green}Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"

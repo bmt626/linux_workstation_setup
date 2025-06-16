@@ -130,7 +130,7 @@ cp bash_aliases ~/.bash_aliases
 
 # install go
 if [[ -z "$GOPATH" ]];then
-echo -e "${Yellow}It looks like go is not installed, would you like to install it now"
+echo -e "${Yellow}It looks like go is not installed, would you like to install it now ${Color_Off}"
 PS3="Please select an option : "
 choices=("yes" "no")
 select choice in "${choices[@]}"; do
@@ -152,8 +152,8 @@ select choice in "${choices[@]}"; do
 					break
 					;;
 				no)
-					echo -e "${Red}Please install go and rerun this script"
-					echo -e "${Red}Aborting installation..."
+					echo -e "${Red}Please install go and rerun this script ${Color_Off}"
+					echo -e "${Red}Aborting installation... ${Color_Off}"
 					exit 1
 					;;
 	esac	
@@ -167,11 +167,11 @@ mkdir ~/tools
 cd ~/tools/
 
 #install chromium
-echo -e "${Blue}Installing Chromium"
+echo -e "${Blue}Installing Chromium...${Color_Off}"
 sudo snap install chromium
-echo -e "${Green}Done!"
+echo -e "${Green}Done!${Color_Off}"
 
-echo -e "${Blue}Installing Sublist3r"
+echo -e "${Blue}Installing Sublist3r...${Color_Off}"
 git clone https://github.com/aboul3la/Sublist3r.git
 cd Sublist3r*
 pip3 install -r requirements.txt

@@ -461,7 +461,9 @@ rm genymotion-3.8.0-linux_x64.bin
 echo -e "${Green}Done!${Color_Off}"
 
 echo -e "${Blue}Installing Oniux...${Color_Off}"
-cargo install --git https://gitlab.torproject.org/tpo/core/oniux --tag v0.4.0 oniux
+cargo install --git https://gitlab.torproject.org/tpo/core/oniux --tag v0.5.0 oniux
+sudo ln -s $HOME/.cargo/bin/oniux /usr/local/bin/
+sudo apparmor_parser -a /etc/apparmor.d/oniux
 echo -e "${Green}Done!${Color_Off}"
 
 echo -e "${Green}\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"

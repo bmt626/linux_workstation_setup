@@ -1,4 +1,5 @@
 #----- recon -----
+
 crtndstry(){
 ./tools/crtndstry/crtndstry $1
 }
@@ -28,15 +29,6 @@ certnmap(){
 curl https://certspotter.com/api/v0/certs\?domain\=$1 | jq '.[].dns_names[]' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1  | nmap -T5 -Pn -sS -i - -$
 } #h/t Jobert Abma
 
-ipinfo(){
-    if [ -z "$1" ]
-    then
-        curl https://ipinfo.io/what-is-my-ip
-    else curl https://ipinfo.io/$1
-    fi
-
-}
-
 
 #------ Tools ------
 
@@ -54,6 +46,18 @@ nc -l -n -vv -p $1 -k
 
 crtshdirsearch(){ #gets all domains from crtsh, runs httprobe and then dir bruteforcers
 curl -s https://crt.sh/?q\=%.$1\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | httprobe -c 50 | grep https | xargs -n1 -I{} python3 ~/tools/dirsearch/dirsearch.py -u {} -e $2 -t 50 -b 
+}
+
+
+#------ Custom Utilities ------
+
+ipinfo(){
+    if [ -z "$1" ]
+    then
+        curl https://ipinfo.io/what-is-my-ip
+    else curl https://ipinfo.io/$1
+    fi
+
 }
 
 show-ips(){

@@ -63,7 +63,7 @@ show-ips(){
 pingsweep(){
     if [ -z "$1" ]
     then
-        echo "You forget an ip adress!"
+        echo "You forgot to enter an ip range!!"
         echo "Syntax: pingsweep 192.168.1"
     else
         for ip in `seq 1 254` ; do

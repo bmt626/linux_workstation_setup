@@ -4,6 +4,7 @@ sudo apt install -y android-sdk-platform-tools
 sudo apt install -y binwalk
 sudo apt install -y curl
 sudo apt install -y git
+sudo apt install -y golang
 sudo apt install -y hackrf
 sudo apt install -y hashcat
 sudo apt install -y hcxdumptool
@@ -26,7 +27,7 @@ sudo apt install -y smbclient
 sudo apt install -y tmux
 sudo apt install -y tshark
 sudo apt install -y wireguard
-sudo apt instlal -y xclip
+sudo apt install -y xclip
 
 # Install wireshark and auto answer setuid question to true
 echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections && sudo DEBIAN_FRONTEN=noninteractive apt install -y wireshark
@@ -34,9 +35,33 @@ echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debc
 # Add current user to wireshark group
 sudo usermod -aG wireshark $USER
 
+# add sbin to bashrc
+cat <<EOT >> ~/.bashrc
+
+# Add sbin to PATH
+export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/sbin:$PATH
+
+EOT
+
+# add go to bashrc
+cat <<EOT >> ~/.bashrc
+
+# Add go to path
+GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+EOT
+
 # Create tools directory and set toolsdir variable
 mkdir $HOME/tools
 export toolsdir=$HOME/tools
+# add to bashrc
+cat <<EOT >> ~/.bashrc
+
+# Adding toolsdir
+export toolsdir=$HOME/tools
+
+EOT
 
 # copy tools_profile to  ~/.tools_profile and add to bashrc
 cp tools_profile ~/.tools_profile
@@ -55,6 +80,15 @@ pipx ensurepath
 
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
+
+# add rust to bashrc
+cat <<EOT >> ~/.bashrc
+
+# Add rust to PATH
+. "$HOME/.cargo/env"
+
+EOT
 
 # Install httpx
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest

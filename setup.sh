@@ -150,9 +150,6 @@ git clone https://github.com/danielmiessler/SecLists.git
 # Install feroxbuster
 curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/main/install-nix.sh | bash -s $HOME/.local/bin
 
-# Install impacket
-# pipx install impacket
-
 # Install sqlmap
 cd $toolsdir
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git

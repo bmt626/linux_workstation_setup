@@ -80,3 +80,9 @@ bashrc:
 - seclists
 - sqlmap
 - subfinder
+
+### TODO
+- Fix wireshark install to auto answer yes to the setuid question to further automate the script
+- Make script to get the latest peass-ng releases (sh,bat,exe files) and place it in the peass-ng-releases dir
+- Mak script to get the latest version of ghidra.
+- Possibly combine the previous two into a script that will get the latest versions of all the tools installed by this script

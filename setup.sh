@@ -1,120 +1,42 @@
 #!/bin/bash
 
-# Reset
-Color_Off='\033[0m'       # Text Reset
-
-# Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
-
-
-WORKDIR=`pwd`
-
-
-sudo apt -y update
-sudo apt -y upgrade
-
-sudo apt install -y libcurl4-openssl-dev
-sudo apt install -y libssl-dev
+sudo apt install -y android-sdk-platform-tools
+sudo apt install -y binwalk
 sudo apt install -y curl
-sudo apt install -y pkg-config
+sudo apt install -y git
+sudo apt install -y hackrf
+sudo apt install -y hashcat
+sudo apt install -y hcxdumptool
+sudo apt install -y hcxtools
+sudo apt install -y htop
+sudo apt install -y john john-data
 sudo apt install -y jq
-sudo apt install -y dkms
-sudo apt install -y ruby-full
-sudo apt install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev
-sudo apt install -y build-essential libffi-dev
-sudo apt install -y python3-setuptools
-sudo apt install -y libldns-dev
+sudo apt install -y libimage-exiftool-perl
+sudo apt install -y libpcap-dev
+sudo apt install -y libssl-dev
+sudo apt install -y openjdk-21-jdk
 sudo apt install -y python3-pip
 sudo apt install -y python-is-python3
-sudo apt install -y python3-dnspython
-sudo apt install -y rename
-sudo apt install -y xargs
-sudo apt install -y tmux
-sudo apt install -y binwalk
-sudo apt install -y nmap
-sudo apt install -y john john-data
-sudo apt install -y hydra
-sudo apt install -y hashcat
-sudo apt install -y openvpn
-sudo apt install -y smbclient
 sudo apt install -y python3-ldap3
-sudo apt install -y python3-yaml
+sudo apt install -y python3-yamlsou
 sudo apt install -y python3-impacket
-sudo apt install -y wireshark
-sudo apt install -y wavemon
-sudo apt install -y macchanger
-sudo apt install -y dsniff
-sudo apt install -y aircrack-ng
-sudo apt install -y openjdk-21-jdk
-sudo apt install -y htop
-sudo apt install -y ncdu
-sudo apt install -y iperf3
-sudo apt install -y iptraf-ng
-sudo apt install -y mosh
-sudo apt install -y sipcalc
-sudo apt install -y screen
-sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
-sudo apt install -y python3-venv
-sudo apt install -y yt-dlp youtubedl-gui
-sudo apt install -y alacarte
-sudo apt install -y exiftool libimage-exiftool-perl
-sudo apt install -y android-sdk-platform-tools
-sudo apt install -y libnl-3-dev
-sudo apt install -y libnl-genl-3-dev
-sudo apt install -y net-tools
-sudo apt install -y libpcap-dev
-sudo apt install -y pixiewps
-sudo apt install -y tshark
-sudo apt install -y hcxtools
-sudo apt install -y hcxdumptool
-sudo apt install -y hcxkeys
-sudo apt install -y hackrf
 sudo apt install -y pipx
-sudo apt install -y libfuse2t64
+sudo apt install -y qrencode
+sudo apt install -y smbclient
+sudo apt install -y tmux
+sudo apt install -y tshark
 sudo apt install -y wireguard
-sudo apt install -y flatpak
-sudo apt install -y gnome-software-plugin-flatpak
-sudo apt install -y whois
-sudo apt install -y libkrb5-dev
+sudo apt instlal -y xclip
 
-# add flatpak repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+# Install wireshark and auto answer setuid question to true
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections && sudo DEBIAN_FRONTEN=noninteractive apt install -y wireshark
 
-# add flatpak packages
-flatpak install flathub com.usebottles.bottles -y
-flatpak install flathub co.logonoff.awakeonlan -y
-flatpak install flathub com.boxy_svg.BoxySVG -y
-flatpak install flathub org.sqlitebrowser.sqlitebrowser -y
-flatpak install flathub io.dbeaver.DBeaverCommunity -y
-flatpak install flathub io.github.cleomenezesjr.Escambo -y
-flatpak install flathub rest.insomnia.Insomnia -y
-flatpak install flathub com.github.skylot.jadx -y
-flatpak install flathub com.obsproject.Studio -y
-flatpak install flathub com.getpostman.Postman -y
-flatpak install flathub io.github.sigmasd.stimulator -y
-flatpak install flathub org.telegram.desktop -y
-flatpak install flathub com.github.unrud.VideoDownloader -y
-flatpak install flathub net.werwolv.ImHex -y
- 
-
-# add running user to wireshark group
+# Add current user to wireshark group
 sudo usermod -aG wireshark $USER
 
-# add user to plugdev group
-sudo usermod -aG plugdev $USER
-
-# add user to vboxusers group
-sudo usermod -aG vboxusers $USER
-
-# make sure pipx is added to path
-pipx ensurepath
+# Create tools directory and set toolsdir variable
+mkdir $HOME/tools
+export toolsdir=$HOME/tools
 
 # copy tools_profile to  ~/.tools_profile and add to bashrc
 cp tools_profile ~/.tools_profile
@@ -128,344 +50,164 @@ EOT
 # copy bash_aliases to home dir
 cp bash_aliases ~/.bash_aliases
 
-# Install Rust
-echo -e "${Blue}Installing Rust...${Color_Off}"
+# Add pipx to path
+pipx ensurepath
+
+# Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-echo -e "${Green}Done!${Color_Off}"
 
-# install go
-if [[ -z "$GOPATH" ]];then
-echo -e "${Yellow}It looks like go is not installed, would you like to install it now ${Color_Off}"
-PS3="Please select an option : "
-choices=("yes" "no")
-select choice in "${choices[@]}"; do
-        case $choice in
-                yes)
-
-					echo -e "${Blue}Installing Golang"
-					wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
-					sudo tar -xvf go1.24.2.linux-amd64.tar.gz
-					sudo mv go /usr/local
-					export GOROOT=/usr/local/go
-					export GOPATH=$HOME/go
-					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-					echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
-					echo 'export GOPATH=$HOME/go'	>> ~/.bashrc			
-					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bashrc	
-					source ~/.bashrc
-					sleep 1
-					break
-					;;
-				no)
-					echo -e "${Red}Please install go and rerun this script ${Color_Off}"
-					echo -e "${Red}Aborting installation... ${Color_Off}"
-					exit 1
-					;;
-	esac	
-done
-fi
-
-rm go1.24.2.linux-amd64.tar.gz
-
-#create a tools folder in ~/
-mkdir ~/tools
-cd ~/tools/
-
-#install chromium
-echo -e "${Blue}Installing Chromium...${Color_Off}"
-sudo snap install chromium
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Sublist3r...${Color_Off}"
-git clone https://github.com/aboul3la/Sublist3r.git
-cd Sublist3r*
-pip3 install -r requirements.txt
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing teh_s3_bucketeers...${Color_Off}"
-git clone https://github.com/tomdev/teh_s3_bucketeers.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing wpscan...${Color_Off}"
-git clone https://github.com/wpscanteam/wpscan.git
-cd wpscan*
-sudo gem install bundler && bundle install --without test
-sudo gem install wpscan
-mkdir ~/.wpscan
-cp $WORKDIR/wpscan/scan.json ~/.wpscan/scan.json
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing dirsearch...${Color_Off}"
-git clone https://github.com/maurosoria/dirsearch.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing lazys3...${Color_Off}"
-git clone https://github.com/nahamsec/lazys3.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing virtual host discovery...${Color_Off}"
-git clone https://github.com/jobertabma/virtual-host-discovery.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing sqlmap...${Color_Off}"
-git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing knock.py...${Color_Off}"
-git clone https://github.com/guelfoweb/knock.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing lazyrecon...${Color_Off}"
-git clone https://github.com/nahamsec/lazyrecon.git
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing massdns...${Color_Off}"
-git clone https://github.com/blechschmidt/massdns.git
-cd ~/tools/massdns
-make
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing asnlookup...${Color_Off}"
-git clone https://github.com/yassineaboukir/asnlookup.git
-cd ~/tools/asnlookup
-pip3 install -r requirements.txt
-cd ~/tools/
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing httprobe...${Color_Off}"
-go install github.com/tomnomnom/httprobe@latest 
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing unfurl...${Color_Off}"
-go install github.com/tomnomnom/unfurl@latest 
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing waybackurls...${Color_Off}"
-go install github.com/tomnomnom/waybackurls@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing crtndstry...${Color_Off}"
-git clone https://github.com/nahamsec/crtndstry.git
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing gobuster...${Color_Off}"
-go install github.com/OJ/gobuster@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing ffuf...${Color_Off}"
-go install github.com/ffuf/ffuf@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing hakrawler...${Color_Off}"
-go install github.com/hakluke/hakrawler@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing hakrevdns...${Color_Off}"
-go install github.com/hakluke/hakrevdns@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "{$Blue}Downloading Seclists...${Color_Off}"
-cd ~/tools/
-git clone https://github.com/danielmiessler/SecLists.git
-cd ~/tools/SecLists/Discovery/DNS/
-##THIS FILE BREAKS MASSDNS AND NEEDS TO BE CLEANED
-cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
-cd ~/tools/
-
-echo -e "${Blue}Installing linPEAS \& winPEAS...${Color_Off}"
-mkdir PEASS-ng
-cd PEASS-ng
-wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
-wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing enum4linux-ng...${Color_Off}"
-git clone https://github.com/cddmp/enum4linux-ng
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing responder...${Color_Off}"
-git clone https://github.com/lgandx/Responder.git
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing OneRuleToRuleThemAll...${Color_Off}"
-git clone https://github.com/NotSoSecure/password_cracking_rules.git
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing httpx...${Color_Off}"
+# Install httpx
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-echo -e "${Green}Done!${Color_Off}"
 
-echo -e "${Blue}Installing Metasploit...${Color_Off}"
+# Install subfinder
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
+# Install naabu - libcap on Linux: sudo apt install -y libpcap-dev, on Mac: brew install libpcap
+go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+
+# install cvemap
+go install github.com/projectdiscovery/cvemap/cmd/cvemap@latest
+
+# Install nuclei
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+
+# Install hakoriginfinder
+go install github.com/hakluke/hakoriginfinder@latest
+
+# Install hakcheckurl
+go install github.com/hakluke/hakcheckurl@latest
+
+# Install hakrevdns
+go install github.com/hakluke/hakrevdns@latest
+
+# Install hakrawler
+go install github.com/hakluke/hakrawler@latest
+
+# Git Nuclei Templates
+cd $toolsdir
+git clone https://github.com/projectdiscovery/nuclei-templates.git
+
+# Install ffuf
+go install github.com/ffuf/ffuf/v2@latest
+
+# Install gobuster
+go install github.com/OJ/gobuster/v3@latest
+
+# Install RustScan
+cargo install rustscan
+
+# Install search-that-hash
+# https://github.com/bee-san/Search-That-Hash
+pipx install search-that-hash
+
+# Install name-that-hash
+# https://github.com/bee-san/Name-That-Hash
+pipx install name-that-hash
+
+
+# Install pywhat
+# https://github.com/bee-san/pyWhat
+pipx install pywhat
+
+# Get seclists
+cd $toolsdir
+git clone https://github.com/danielmiessler/SecLists.git
+
+# Install feroxbuster
+curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/main/install-nix.sh | bash -s $HOME/.local/bin
+
+# Install impacket
+# pipx install impacket
+
+# Install sqlmap
+cd $toolsdir
+git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
+
+# Git peass-ng repo
+cd $toolsdir
+git clone https://github.com/peass-ng/PEASS-ng.git
+
+
+# Get peass-ng scripts and exes
+cd $toolsdir
+mkdir PEASS-ng-releases
+cd PEASS-ng-releases
+
+latest_peass_url=$(curl -s https://api.github.com/repos/peass-ng/PEASS-ng/releases/latest)
+
+# get linpeas.sh
+peass_file="linpeas.sh"
+download_url=$(echo "$latest_peass_url"|jq -r '.assets[]|select(.name=="'$peass_file'").browser_download_url')
+curl -L -o $peass_file $download_url
+chmod +x $peass_file
+
+# get  linpeas_fat.sh 
+peass_file="linpeas_fat.sh"
+download_url=$(echo "$latest_peass_url"|jq -r '.assets[]|select(.name=="'$peass_file'").browser_download_url')
+curl -L -o $peass_file $download_url
+chmod +x $peass_file
+
+# get winPEAS.bat  
+peass_file="winPEAS.bat"
+download_url=$(echo "$latest_peass_url"|jq -r '.assets[]|select(.name=="'$peass_file'").browser_download_url')
+curl -L -o $peass_file $download_url
+
+# get winPEASx64.exe  
+peass_file="winPEASx64.exe"
+download_url=$(echo "$latest_peass_url"|jq -r '.assets[]|select(.name=="'$peass_file'").browser_download_url')
+curl -L -o $peass_file $download_url
+
+# get winPEASx64_ofs.exe  
+peass_file="winPEASx64_ofs.exe"
+download_url=$(echo "$latest_peass_url"|jq -r '.assets[]|select(.name=="'$peass_file'").browser_download_url')
+curl -L -o $peass_file $download_url
+
+# get winPEAS.ps1
+curl -LO https://raw.githubusercontent.com/peass-ng/PEASS-ng/refs/heads/master/winPEAS/winPEASps1/winPEAS.ps1
+
+# Install enum4linux-ng
+cd $toolsdir
+git clone https://github.com/cddmp/enum4linux-ng && \
+cd enum4linux-ng && \
+python3 -m venv venv &&\
+source venv/bin/activate && \
+pip install wheel && \
+pip install -r requirements.txt && \
+deactivate && \
+# fix enum4linux-ng.py to activate venv when ran
+sed -i "1s|^#\!/usr/bin/env python3$|#\!${toolsdir}/enum4linux-ng/venv/bin/python3|" enum4linux-ng.py
+
+# Install metasploit
+cd $toolsdir
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
   chmod 755 msfinstall && \
   ./msfinstall
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
+rm msfinstall
 
-echo -e "${Blue}Installing trape...${Color_Off}"
-git clone https://github.com/jofpin/trape.git
-cd trape
-pip3 install -r requirements.txt
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
+# Install ghidra
+cd /tmp
+curl -s https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest |\
+jq -r '.assets[] | select(.name | test("^ghidra.*\\.zip$")) | .browser_download_url' |\
+xargs -n 1 curl -LO
+unzip ghidra*.zip
+echo "Installing ghidra to /opt"
+sudo mv ghidra*/ /opt/ghidra
 
-echo -e "${Blue}Installing MobSF...${Color_Off}"
-git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
-cd Mobile-Security-Framework-MobSF
-./setup.sh
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
+#Fix ghidra.ico
+# On Debian the icon shows up glitched and does not render
+cd /tmp
+curl -LO https://raw.githubusercontent.com/bmt626/AppIcons/refs/heads/main/ghidra/ghidra.svg
+sudo mv ghidra.svg /opt/ghidra/support/
 
-echo -e "${Blue}Installing proxmark3...${Color_Off}"
-git clone https://github.com/RfidResearchGroup/proxmark3.git
-cd proxmark3
-sudo apt-get install --no-install-recommends git ca-certificates build-essential pkg-config libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev libbz2-dev libbluetooth-dev libpython3-dev libssl-dev -y
-make accessrights
-cp ~/linux_workstation_setup/proxmark3/Makefile.platform ~/tools/proxmark3/Makefile.platform
-make clean && make -j
-sudo make install
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
+# Create desktop / menu entry
+echo "Creating menu entry"
+cat <<EOT >> $HOME/.local/share/applications/ghidra.desktop
+[Desktop Entry]
+Name=Ghidra
+Exec=/opt/ghidra/ghidraRun
+Comment=
+Terminal=false
+Icon=/opt/ghidra/support/ghidra.svg
+Type=Application
 
-echo -e "${Blue}Installing john the ripper jumbo...${Color_Off}"
-git clone https://github.com/openwall/john.git
-cd john/scr
-./configure && make -s clean && make
-~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing feroxbuster...${Color_Off}"
-git clone https://github.com/epi052/feroxbuster.git
-cd feroxbuster
-bash install-nix.sh
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing impacket...${Color_Off}"
-git clone https://github.com/fortra/impacket.git
-cd impacket
-sudo python setup.py install
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing support for ALFA AWUS036ACH...${Color_Off}"
-git clone https://github.com/aircrack-ng/rtl8812au/
-cd rtl8812au
-sudo make dkms_install
-sudo dkms autoinstall
-sudo dkms status
-sudo modprobe 88XXau
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing wifite...${Color_Off}"
-git clone https://github.com/kimocoder/wifite2.git
-cd wifite2
-pip3 install -r requirements.txt
-sudo python3 setup.py install
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing pantagrule...${Color_Off}"
-git clone https://github.com/rarecoil/pantagrule.git
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing wifiphisher...${Color_Off}"
-git clone https://github.com/wifiphisher/wifiphisher.git
-cd wifiphisher
-sudo python setup.py install
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Running pipx ensurepath to fix pipx...${Color_Off}"
-pipx ensurepath
-source ~/.bashrc
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Updog Server...${Color_Off}"
-echo -e "${Cyan} What\'s Updog??${Color_Off}"
-pipx install updog
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Naabu...${Color_Off}"
-go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing dnsx...${Color_Off}"
-go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing subfinder...${Color_Off}"
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Rustscan...${Color_Off}"
-wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zip
-unzip rustscan.deb.zip
-sudo dpkg -i rustscan*.deb
-rm rustscan*
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing NetExec...${Color_Off}"
-pipx install git+https://github.com/Pennyw0rth/NetExec
-cd ~/tools
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Adding Docker's official GPG key...${Color_Off}"
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-echo -e "${Blue}Adding the docker repository to Apt sources...${Color_Off}"
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Docker...${Color_Off}"
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Adding user to docker group...${Color_Off}"
-sudo usermod -aG docker $USER
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing bloodyAD..."
-pipx install bloodyAD
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing autobloody..."
-pipx install autobloody
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Genymotion...${Color_Off}"
-wget https://dl.genymotion.com/releases/genymotion-3.8.0/genymotion-3.8.0-linux_x64.bin
-sudo bash genymotion-3.8.0-linux_x64.bin -y
-rm genymotion-3.8.0-linux_x64.bin
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Blue}Installing Oniux...${Color_Off}"
-cargo install --git https://gitlab.torproject.org/tpo/core/oniux --tag v0.5.0 oniux
-# sudo ln -s $HOME/.cargo/bin/oniux /usr/local/bin/
-# sudo apparmor_parser -a /etc/apparmor.d/oniux
-echo -e "${Green}Done!${Color_Off}"
-
-echo -e "${Green}\n\n\n\n\n\n\n\n\n\n\nDone! All tools are set up in ~/tools"
-ls -la
-echo -e "${Green}Don't forget to add your api key for wpscan to ~/.wpscan/scan.json"
+EOT

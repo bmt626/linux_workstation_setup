@@ -2,6 +2,7 @@
 
 sudo apt install -y android-sdk-platform-tools
 sudo apt install -y binwalk
+sudo apt install -y build-essential
 sudo apt install -y curl
 sudo apt install -y git
 sudo apt install -y golang
@@ -15,6 +16,7 @@ sudo apt install -y jq
 sudo apt install -y libimage-exiftool-perl
 sudo apt install -y libpcap-dev
 sudo apt install -y libssl-dev
+sudo apt install -y linux-headers-$(uname -r)
 sudo apt install -y openjdk-21-jdk
 sudo apt install -y python3-pip
 sudo apt install -y python-is-python3

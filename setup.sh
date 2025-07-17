@@ -30,7 +30,8 @@ sudo apt install -y wireguard
 sudo apt install -y xclip
 
 # Install wireshark and auto answer setuid question to true
-echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections && sudo DEBIAN_FRONTEN=noninteractive apt install -y wireshark
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt install -y wireshark
 
 # Add current user to wireshark group
 sudo usermod -aG wireshark $USER

@@ -85,11 +85,13 @@ pipx ensurepath
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . "$HOME/.cargo/env"
 
-# add rust to bashrc
+# add rust to bashrc if installed
 cat <<EOT >> ~/.bashrc
 
-# Add rust to PATH
+# Add rust to PATH if installed
+if [ -f "$HOME/.cargo/env" ]; then
 . "$HOME/.cargo/env"
+fi
 
 EOT
 
